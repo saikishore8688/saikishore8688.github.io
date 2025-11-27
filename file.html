@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sai Kishore Bojanapu — Electronics & Embedded Systems Engineer</title>
+  <meta name="description" content="Portfolio — Sai Kishore Bojanapu | Embedded Systems, Arduino, IoT, Web" />
+
+  <!-- Three.js + GSAP (CDN) -->
+  <script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
+  <script src="https://unpkg.com/three@0.158.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <style>
+    :root{--bg:#081025;--card:#0d1530;--accent:#7be495;--glass: rgba(255,255,255,0.04);--text:#e6f0ff}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial}
+    body{background:linear-gradient(180deg,#06101f 0%, #081025 60%);color:var(--text);overflow:hidden}
+
+    /* Layout */
+    .wrap{position:relative;height:100vh;display:grid;grid-template-columns:420px 1fr;gap:24px;padding:28px}
+    header{grid-column:1/3;display:flex;justify-content:space-between;align-items:center}
+    .logo{font-weight:700;letter-spacing:0.4px}
+
+    /* Left panel */
+    .panel{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);backdrop-filter: blur(6px);border-radius:16px;padding:22px;box-shadow:0 8px 30px rgba(2,6,23,0.6)}
+    .left{padding:18px}
+    .avatar{width:100%;height:260px;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#081533 0%, #022a3a 100%);position:relative}
+    .avatar h1{font-size:22px;margin:0}
+    .subtitle{opacity:0.8;margin-top:8px}
+
+    .skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+    .skill{background:var(--glass);padding:8px 10px;border-radius:10px;font-size:13px}
+
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--accent),#3bd4ff);color:#042;cursor:pointer;border:none}
+
+    /* Right content */
+    .content{padding:18px;display:flex;flex-direction:column;gap:18px}
+    .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+    .card{background:var(--card);padding:14px;border-radius:12px;min-height:120px;box-shadow:0 6px 20px rgba(2,6,23,0.6);transform-style:preserve-3d}
+    .card h3{margin:0 0 8px 0}
+    .card p{margin:0;opacity:0.85;font-size:13px}
+
+    /* Canvas */
+    #threewrap{position:absolute;right:28px;top:28px;width:46%;height:72%;pointer-events:none}
+
+    /* Footer/contact */
+    .contact{display:flex;gap:12px;align-items:center}
+    .contact a{color:var(--text);text-decoration:none;padding:8px 12px;background:rgba(255,255,255,0.03);border-radius:10px}
+
+    /* Responsiveness */
+    @media (max-width:980px){.wrap{grid-template-columns:1fr;padding:18px}.left{order:2}.content{order:1}.#threewrap{display:none}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">Sai Kishore Bojanapu</div>
+      <nav class="contact">
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <aside class="panel left">
+      <div class="avatar">
+        <div style="text-align:center;">
+          <h1>Sai Kishore</h1>
+          <div class="subtitle">Electronics & Embedded Systems Engineer</div>
+        </div>
+      </div>
+
+      <div style="margin-top:14px">
+        <strong>About</strong>
+        <p style="opacity:0.85">B.Tech in ECE (CGPA: 7.56). Enthusiastic about embedded systems, Arduino projects, IoT and learning full-stack web dev. Completed projects include 360° Radar System and Object Detection & Ranging System using ultrasonic sensors.</p>
+      </div>
+
+      <div style="margin-top:12px">
+        <strong>Skills</strong>
+        <div class="skills">
+          <div class="skill">Embedded C</div>
+          <div class="skill">Arduino</div>
+          <div class="skill">C / C++</div>
+          <div class="skill">Python</div>
+          <div class="skill">Linux</div>
+          <div class="skill">Git & GitHub</div>
+          <div class="skill">HTML / CSS / JS</div>
+          <div class="skill">Three.js</div>
+        </div>
+      </div>
+
+      <div style="margin-top:12px;display:flex;gap:10px">
+        <button class="btn" id="downloadBtn">Download CV</button>
+        <button class="btn" id="resumeWebBtn">Resume (Web)</button>
+      </div>
+
+      <div style="margin-top:16px;font-size:13px;opacity:0.9">
+        <strong>Education</strong>
+        <div>Sri Venkateshwara College of Engineering — B.Tech, ECE (2021–2025)</div>
+      </div>
+    </aside>
+
+    <main class="panel content">
+      <section id="projects">
+        <h2>Projects</h2>
+        <div class="projects">
+          <article class="card">
+            <h3>360° Radar System Using Arduino</h3>
+            <p>Final-year project integrating ultrasonic sensing for object detection and ranging. (Team project)</p>
+          </article>
+
+          <article class="card">
+            <h3>Object Detection & Ranging System</h3>
+            <p>Standalone object detection using ultrasonic sensors and microcontroller logic.</p>
+          </article>
+
+          <article class="card">
+            <h3>Notice Board Using Arduino</h3>
+            <p>Electronic notice board prototype using Arduino and display modules.</p>
+          </article>
+
+          <article class="card">
+            <h3>IoT Home Automation (Demo)</h3>
+            <p>Simple IoT controls using ESP modules and mobile interface (demo).</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="about">
+        <h2>About Me</h2>
+        <p style="opacity:0.9">I build electronics projects, write embedded firmware in C, and am learning web development (HTML/CSS/JS + Three.js) to present projects beautifully online. Open to internships and junior roles in embedded systems and IoT.</p>
+      </section>
+
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>Open to work — Email: <em>replace-me@example.com</em> | GitHub: <em>github.com/saikishore8688</em></p>
+        <div style="margin-top:8px">
+          <a href="#" class="btn">Download Projects Zip</a>
+        </div>
+      </section>
+    </main>
+
+    <!-- 3D Canvas container -->
+    <div id="threewrap"></div>
+  </div>
+
+  <script>
+    // Basic Three.js scene: rotating "PCB-like" board with floating components
+    (function(){
+      const container = document.getElementById('threewrap');
+      const scene = new THREE.Scene();
+      const w = Math.min(window.innerWidth * 0.46, 900);
+      const h = Math.min(window.innerHeight * 0.72, 700);
+
+      const camera = new THREE.PerspectiveCamera(45, w/h, 0.1, 1000);
+      camera.position.set(0, 1.2, 3);
+
+      const renderer = new THREE.WebGLRenderer({antialias:true, alpha:true});
+      renderer.setSize(w,h);
+      renderer.setPixelRatio(window.devicePixelRatio);
+      container.appendChild(renderer.domElement);
+      renderer.domElement.style.pointerEvents = 'none';
+
+      const light = new THREE.DirectionalLight(0xffffff, 0.9);
+      light.position.set(5,10,7);
+      scene.add(light);
+      scene.add(new THREE.AmbientLight(0x404050, 0.8));
+
+      // "PCB" base
+      const baseGeo = new THREE.BoxGeometry(2.4, 0.06, 1.2);
+      const baseMat = new THREE.MeshStandardMaterial({color:0x023a2e, metalness:0.2, roughness:0.4});
+      const base = new THREE.Mesh(baseGeo, baseMat);
+      base.rotation.x = -0.1;
+      scene.add(base);
+
+      // LEDs / components - simple boxes & cylinders
+      function makeChip(x,y,z){
+        const g = new THREE.BoxGeometry(0.35, 0.15, 0.22);
+        const m = new THREE.MeshStandardMaterial({color:0x0b3b55, metalness:0.3, roughness:0.2});
+        const o = new THREE.Mesh(g,m); o.position.set(x,y,z); return o;
+      }
+      const chip1 = makeChip(-0.5,0.09,-0.2);
+      const chip2 = makeChip(0.6,0.09,0.3);
+      scene.add(chip1, chip2);
+
+      // Cylindrical ultrasonic sensor like objects
+      const cylGeo = new THREE.CylinderGeometry(0.12,0.12,0.12,32);
+      const cylMat = new THREE.MeshStandardMaterial({color:0xdedede, metalness:0.6, roughness:0.2});
+      const s1 = new THREE.Mesh(cylGeo, cylMat); s1.position.set(-0.9,0.12,0.45); s1.rotation.z = Math.PI/2;
+      const s2 = s1.clone(); s2.position.set(0.95,0.12,-0.4);
+      scene.add(s1,s2);
+
+      // small spheres (LEDs)
+      const ledGeo = new THREE.SphereGeometry(0.04,16,12);
+      const ledMat = new THREE.MeshStandardMaterial({emissive:0x66ffcc, emissiveIntensity:0.4,color:0x002b22});
+      const leds = [];
+      for(let i=0;i<6;i++){const l=new THREE.Mesh(ledGeo, ledMat); l.position.set(-1+ i*0.35,0.16,0.6 - (i%2)*0.4); scene.add(l); leds.push(l);} 
+
+      // subtle floating group
+      const group = new THREE.Group(); group.add(base, chip1, chip2, s1, s2); scene.add(group);
+
+      // Orbit controls (disabled interaction but used for nice auto-rotate)
+      const controls = new THREE.OrbitControls(camera, renderer.domElement); controls.enabled=false;
+
+      // Responsive
+      window.addEventListener('resize', ()=>{
+        const nw = Math.min(window.innerWidth * 0.46, 900);
+        const nh = Math.min(window.innerHeight * 0.72, 700);
+        renderer.setSize(nw,nh); camera.aspect = nw/nh; camera.updateProjectionMatrix();
+      });
+
+      // Animation
+      function animate(){
+        requestAnimationFrame(animate);
+        const t = Date.now() * 0.001;
+        group.rotation.y = Math.sin(t*0.3)*0.35 + 0.25;
+        group.rotation.x = Math.sin(t*0.13)*0.02 - 0.08;
+        base.position.y = Math.sin(t*0.7)*0.01;
+        for(let i=0;i<leds.length;i++){leds[i].material.emissiveIntensity = 0.2 + Math.abs(Math.sin(t*1.2 + i))*0.6}
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      // download CV button (placeholder) - will trigger download of a generated text CV
+      document.getElementById('downloadBtn').addEventListener('click', ()=>{
+        const text = `Sai Kishore Bojanapu\nElectronics & Embedded Systems Engineer\n\nEmail: replace-me@example.com\nGitHub: github.com/saikishore8688\n\nSkills:\n- Embedded C, Arduino, C/C++, Python, Linux, HTML/CSS/JS\n\nProjects:\n- 360° Radar System Using Arduino\n- Object Detection & Ranging System\n- Notice Board Using Arduino\n`;
+        const blob = new Blob([text], {type:'text/plain'});
+        const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'SaiKishore_CV.txt'; a.click();
+      });
+
+      // Resume web button - open github profile placeholder
+      document.getElementById('resumeWebBtn').addEventListener('click', ()=>{
+        window.open('https://github.com/saikishore8688', '_blank');
+      });
+
+    })();
+  </script>
+</body>
+</html>
